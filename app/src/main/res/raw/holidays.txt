@@ -1,0 +1,12 @@
+H--Canadian Holidays
+P--New Year's Day - January 1, 2015
+P--Good Friday (except QC) - April 3, 2015
+P--Mother's Day - May 10, 2015
+P--Victoria Day - May 18, 2015
+P--Father's Day - June 21, 2015
+P--Canada Day - July 1, 2015
+P--Labour Day - September 7, 2015
+P--Thanksgiving Day - October 12, 2015
+P--Halloween - October 31, 2015
+P--Remembrance Day - Nov 11, 2015
+P--Christmas - Dec 25, 2015
