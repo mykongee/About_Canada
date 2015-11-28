@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import java.io.*;
@@ -88,7 +89,7 @@ public class AboutCitiesFragment extends android.support.v4.app.Fragment {
 
 
     public void DispFileText(LinearLayout ll){
-        InputStream is = getResources().openRawResource(R.raw.filename);
+        InputStream is = getResources().openRawResource(R.raw.social);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
         String entireFile = "";
@@ -97,8 +98,14 @@ public class AboutCitiesFragment extends android.support.v4.app.Fragment {
             while((line = br.readLine()) != null) { // <--------- place readLine() inside loop
                // entireFile += (line + "\n"); // <---------- add each line to entireFile
                 TextView tv = new TextView(getActivity());
-                tv.setText(line.substring(3, line.length()));
+                if (line.length() > 0) {
+                    tv.setText(line.substring(3, line.length()));
+                }
                 LayoutParams layout = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+                if (line.length() <= 0) {
+
+                }
+                else {
 
                 if (line.substring(0,3).equals("H--")) {
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
@@ -109,6 +116,9 @@ public class AboutCitiesFragment extends android.support.v4.app.Fragment {
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
                     tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
                     tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, 0, 0);
+                }
+                else if (line.substring(0,3).equals("") || line.substring(0,3).equals("   ")){
+
                 }else {
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
                     tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
@@ -116,6 +126,7 @@ public class AboutCitiesFragment extends android.support.v4.app.Fragment {
                 }
                 tv.setLayoutParams(layout);
                 ll.addView(tv);
+            }
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block

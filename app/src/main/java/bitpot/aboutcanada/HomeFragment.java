@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -89,23 +90,31 @@ public class HomeFragment extends android.support.v4.app.Fragment {
             while((line = br.readLine()) != null) { // <--------- place readLine() inside loop
                 // entireFile += (line + "\n"); // <---------- add each line to entireFile
                 TextView tv = new TextView(getActivity());
-                tv.setText(line.substring(3, line.length()));
-                ViewGroup.LayoutParams layout = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-
-                if (line.substring(0,3).equals("H--")) {
-                    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
-                    tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_header)));
-                    tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, (int) (5 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density));
-                }else if (line.substring(0,3).equals("P--")) {
-                    tv.setText("   • "+line.substring(3,line.length()));
-                    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-                    tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
-                    tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, 0, 0);
-                }else {
-                    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
-                    tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
-                    tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, 0, 0);
+                if (line.length() > 0){
+                    tv.setText(line.substring(3, line.length()));
                 }
+                ViewGroup.LayoutParams layout = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+                if (line.length() <= 0) {
+
+                }
+                else {
+                    if (line.substring(0,3).equals("H--")) {
+                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
+                        tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_header)));
+                        tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, (int) (5 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density));
+                    }else if (line.substring(0,3).equals("P--")) {
+                        tv.setText("   • "+line.substring(3,line.length()));
+                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+                        tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
+                        tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, 0, 0);
+                    }
+                    else {
+                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+                        tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
+                        tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, 0, 0);
+                    }
+                }
+
                 tv.setLayoutParams(layout);
                 ll.addView(tv);
             }
