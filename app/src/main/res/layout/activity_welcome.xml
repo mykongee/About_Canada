@@ -13,7 +13,6 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:scaleType="centerCrop"
-        android:src="@drawable/cc"
         android:gravity="center" />
 
     <TextView

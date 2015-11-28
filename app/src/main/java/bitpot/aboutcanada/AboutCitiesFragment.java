@@ -1,12 +1,29 @@
 package bitpot.aboutcanada;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.os.Bundle;
 import android.app.Fragment;
+import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
+import java.io.*;
+import android.graphics.Color;
+import java.lang.reflect.Type;
+
+import android.util.TypedValue;
+import android.view.ViewGroup.*;
+import android.widget.FrameLayout;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
+import android.widget.TextView;
 import android.view.ViewGroup;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
 
 
 /**
@@ -63,8 +80,47 @@ public class AboutCitiesFragment extends android.support.v4.app.Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_about_cities, container, false);
+        View view = inflater.inflate(R.layout.fragment_about_cities, null);
+        DispFileText((LinearLayout) view.findViewById(R.id.fragCityLinLay));
+        return view;
+    }
+
+
+
+    public void DispFileText(LinearLayout ll){
+        InputStream is = getResources().openRawResource(R.raw.filename);
+        BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        String line;
+        String entireFile = "";
+
+        try {
+            while((line = br.readLine()) != null) { // <--------- place readLine() inside loop
+               // entireFile += (line + "\n"); // <---------- add each line to entireFile
+                TextView tv = new TextView(getActivity());
+                tv.setText(line.substring(3, line.length()));
+                LayoutParams layout = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
+
+                if (line.substring(0,3).equals("H--")) {
+                    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
+                    tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_header)));
+                    tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, (int) (5 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density));
+                }else if (line.substring(0,3).equals("P--")) {
+                    tv.setText("   • "+line.substring(3,line.length()));
+                    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+                    tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
+                    tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, 0, 0);
+                }else {
+                    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
+                    tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
+                    tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, 0, 0);
+                }
+                tv.setLayoutParams(layout);
+                ll.addView(tv);
+            }
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event
