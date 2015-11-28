@@ -89,7 +89,7 @@ public class AboutCitiesFragment extends android.support.v4.app.Fragment {
 
 
     public void DispFileText(LinearLayout ll){
-        InputStream is = getResources().openRawResource(R.raw.social);
+        InputStream is = getResources().openRawResource(R.raw.cities);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
         String entireFile = "";
@@ -110,20 +110,27 @@ public class AboutCitiesFragment extends android.support.v4.app.Fragment {
                 if (line.substring(0,3).equals("H--")) {
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 40);
                     tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_header)));
-                    tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, (int) (5 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density));
+                    tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density), (int) (15 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density));
                 }else if (line.substring(0,3).equals("P--")) {
                     tv.setText("   • "+line.substring(3,line.length()));
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
                     tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
-                    tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, 0, 0);
+                    tv.setPadding((int) (10 * getResources().getDisplayMetrics().density), 0, (int) (10 * getResources().getDisplayMetrics().density), 0);
                 }
                 else {
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
                     tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
-                    tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, 0, 0);
+                    tv.setPadding((int) (10 * getResources().getDisplayMetrics().density), 0, (int) (10 * getResources().getDisplayMetrics().density), 0);
                 }
                 tv.setLayoutParams(layout);
                 ll.addView(tv);
+                    if (line.substring(0,3).equals("H--")) {
+                        View lineDr = new View(getActivity());
+                        LayoutParams linelay = new LayoutParams(LayoutParams.MATCH_PARENT, 1);
+                        lineDr.setLayoutParams(linelay);
+                        lineDr.setBackgroundColor(Color.parseColor(getResources().getString(R.string.line_header)));
+                        ll.addView(lineDr);
+                    }
             }
             }
         } catch (IOException e) {

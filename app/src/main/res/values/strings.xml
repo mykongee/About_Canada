@@ -22,4 +22,5 @@
 
     <string name="font_header">"#CF0000"</string>
     <string name="font_body">"#888888"</string>
+    <string name="line_header">#666666</string>
 </resources>
