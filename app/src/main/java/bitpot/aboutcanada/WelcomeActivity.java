@@ -62,18 +62,6 @@ public class WelcomeActivity extends Activity {
         final View controlsView = findViewById(R.id.fullscreen_content_controls);
         final View contentView = findViewById(R.id.fullscreen_content);
 
-        Handler mHandler = new Handler();
-        mHandler.postDelayed(new Runnable() {
-
-            @Override
-            public void run() {
-                Intent intent = new Intent(getBaseContext(), MainActivity.class);
-                startActivity(intent);
-                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            }
-
-        }, 3000L);
-
         // Set up an instance of SystemUiHider to control the system UI for
         // this activity.
         mSystemUiHider = SystemUiHider.getInstance(this, contentView, HIDER_FLAGS);
@@ -134,6 +122,22 @@ public class WelcomeActivity extends Activity {
 //        findViewById(R.id.dummy_button).setOnTouchListener(mDelayHideTouchListener);
     }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+
+        Handler mHandler = new Handler();
+        mHandler.postDelayed(new Runnable() {
+
+            @Override
+            public void run() {
+                Intent intent = new Intent(getBaseContext(), MainActivity.class);
+                startActivity(intent);
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+            }
+
+        }, 3000L);
+    }
     @Override
     protected void onPostCreate(Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
