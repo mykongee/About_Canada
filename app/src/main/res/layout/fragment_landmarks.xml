@@ -8,10 +8,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     tools:context="bitpot.aboutcanada.LandmarksFragment">
 
-    <TextView android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
-
     <android.support.v7.widget.RecyclerView
         android:id="@+id/card_list"
         android:layout_height="match_parent"
