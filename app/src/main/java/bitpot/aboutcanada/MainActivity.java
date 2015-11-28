@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity
         AboutCanadaFragment.OnFragmentInteractionListener,
         AboutCitiesFragment.OnFragmentInteractionListener,
         CultureFragment.OnFragmentInteractionListener,
-        HomeFragment.OnFragmentInteractionListener{
+        HomeFragment.OnFragmentInteractionListener,
+        HolidaysFragment.OnFragmentInteractionListener{
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
