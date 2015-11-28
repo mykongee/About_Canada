@@ -1,4 +1,4 @@
-H--Dining etiquette
+H--Dining Etiquette
 B--Dining etiquette in Canada is very easygoing across the country. In Quebec however, things may be a bit more formal.
 B--Provinces and territories (excluding Quebec)
 P--fork in left hand; knife in right hand
@@ -9,6 +9,7 @@ P--Do not start to eat until everyone and the host is ready
 P--meals are served in different courses (Usually one appetizer, one salad, one main dish and one dessert)
 P--Try to eat all the food on your plate
 H--Quebec
+P--The main language spoken in Quebec is french
 P--wine is usually served with a meal
 P--If you are invited to drink at a bar, it is expected that each person is to pay for a round.
 P--Refer to a waiter as ‘Monsieur’ and a waitress as ‘Madamoiselle’
