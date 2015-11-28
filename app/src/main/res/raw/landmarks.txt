@@ -1,0 +1,40 @@
+H--Niagara Falls
+P--Located between Toronto, Ontario and New York, United States of America
+P--Known for their beauty and being able to provide lots of hydroelectric power
+P--Collection of three waterfalls, Horseshoe Falls, American Falls, and Bridal Veil Falls
+H--CN Tower
+P--Is classified as one of the seven Wonders of the Modern World by American Society of Civil Engineers
+P--Third tallest tower in the world
+P--Serves as a telecommunications tower
+H--Parliament Hill
+P--Holds the Senate and House of Commons
+P--National Historic Site of Canada
+P--Building where politicians hold debates
+H--Bay of Fundy
+P--The world’s most dynamic tidal coastline
+P--Has the highest tides in the world
+P--Wide variety of ocean life, including 12 different species of whales
+H--Rideau Canal
+P--Waterway connecting the city of Ottawa, Ontario to Kington, Ontario on Lake Ontario
+P--Built in 1832 for use in case of war with the United States
+P--Oldest running canal system in North America
+H--Old Quebec
+P--Buildings date back to the 17th century
+P--Preserves its buildings from its war period like ramparts and gates
+P--Rich with history of the colonial era
+H--Banff National Parks
+P--6,641 square kilometers large
+P--Several lakes, lodges, and snow slopes
+P--Canada’s oldest national park, established in 1885
+H--Chateau Frontenac
+P--Built in 1893 as a hotel, still serves as a hotel
+P--Draws on architectural style of the Middle Ages and Renaissance
+P--Recognized as a National Historical Site of Canada
+H--Confederation Bridge
+P--12.9 kilometer long
+P--Connects the provinces of PEI and New Brunswick
+P--Takes 12 minutes to cross
+H--West Edmonton Mall
+P--Largest shopping mall in North America. 10th largest in the world
+P--800+ stores in the mall
+P--Has indoor water park and rollercoaster
