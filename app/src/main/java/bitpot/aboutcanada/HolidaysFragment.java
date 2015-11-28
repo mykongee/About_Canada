@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,16 +16,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-
 /**
- * A simple {@link Fragment} subclass.
- * Activities that contain this fragment must implement the
- * {@link CultureFragment.OnFragmentInteractionListener} interface
- * to handle interaction events.
- * Use the {@link CultureFragment#newInstance} factory method to
- * create an instance of this fragment.
+ * Created by jackli on 2015-11-28.
+ *
+ * Fragment showing Canadian Holidays
  */
-public class CultureFragment extends android.support.v4.app.Fragment {
+public class HolidaysFragment extends android.support.v4.app.Fragment
+{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -47,8 +43,8 @@ public class CultureFragment extends android.support.v4.app.Fragment {
      * @return A new instance of fragment CultureFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static CultureFragment newInstance(String param1, String param2) {
-        CultureFragment fragment = new CultureFragment();
+    public static HolidaysFragment newInstance(String param1, String param2) {
+        HolidaysFragment fragment = new HolidaysFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -56,7 +52,7 @@ public class CultureFragment extends android.support.v4.app.Fragment {
         return fragment;
     }
 
-    public CultureFragment() {
+    public HolidaysFragment() {
         // Required empty public constructor
     }
 
@@ -78,7 +74,7 @@ public class CultureFragment extends android.support.v4.app.Fragment {
     }
 
     public void DispFileText(LinearLayout ll){
-        InputStream is = getResources().openRawResource(R.raw.social);
+        InputStream is = getResources().openRawResource(R.raw.holidays);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
         String entireFile = "";
@@ -98,7 +94,8 @@ public class CultureFragment extends android.support.v4.app.Fragment {
 
                     if (line.substring(0,3).equals("H--")) {
                         tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
-                        tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_header)));
+                        tv.setTextColor(Color.parseColor(getResources()
+                                .getString(R.string.font_header)));
                         tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density), (int) (15 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density));
                     }else if (line.substring(0,3).equals("P--")) {
                         tv.setText("   • "+line.substring(3,line.length()));
@@ -120,7 +117,7 @@ public class CultureFragment extends android.support.v4.app.Fragment {
                         lineDr.setBackgroundColor(Color.parseColor(getResources().getString(R.string.line_header)));
                         ll.addView(lineDr);
                     }
-            }
+                }
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
