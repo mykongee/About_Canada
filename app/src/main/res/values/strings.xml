@@ -39,4 +39,16 @@
     <string name="halloween">Halloween</string>
     <string name="remembrance_day">Remembrance Day</string>
     <string name="christmas">Christams</string>
+
+    <string-array name="Language_Array">
+        <item>Français</item>
+        <item>العربية</item>
+        <item>中文 (简化)</item>
+        <item>中文 (传统)</item>
+        <item>Filipino</item>
+        <item>हिंदी</item>
+        <item>ਪੰਜਾਬੀ ਦੇ</item>
+        <item>فارسی</item>
+        <item>தமிழ்</item>
+    </string-array>
 </resources>
