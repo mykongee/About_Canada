@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity
         AboutCitiesFragment.OnFragmentInteractionListener,
         CultureFragment.OnFragmentInteractionListener,
         HomeFragment.OnFragmentInteractionListener,
-        HolidaysFragment.OnFragmentInteractionListener{
+        HolidaysFragment.OnFragmentInteractionListener,
         FinanceFragment.OnFragmentInteractionListener
 {
 
