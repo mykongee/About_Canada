@@ -82,7 +82,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
 
 
     public void DispFileText(LinearLayout ll){
-        InputStream is = getResources().openRawResource(R.raw.hi);
+        InputStream is = getResources().openRawResource(R.raw.anthem);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
         String entireFile = "";
