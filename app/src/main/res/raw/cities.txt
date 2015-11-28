@@ -1,0 +1,24 @@
+H--Definition
+H--Public Resources
+B--Public resources include a variety of items which are available for all to use.
+B--These items include:
+P--Public areas: cities usually contain many public parks, and open squares 
+P--Recreation Center or community center: areas where members of the community go to partake in communal activates and  recreational activates
+P--Library: a building congaing a variety of books, which may be borrowed 
+P--Hospital: when you are injured or ill you may go to the hospital for assistance, which is covered for all Canadian citizens
+P--Emergency Services: Fire, Medical, Criminal assistance is available by dialing 911
+H--Events
+B--Cities will hold events through out the year some events shared across all cities and others culturally specific to that city. These events are held in public areas, and everyone is invited and encouraged to come out
+P--Parades: a celebration of a day or event which takes place on the street, most commonly for Christmas
+P--Community Meetings: Meetings typically held in a community center to discuss the city and its circumstances
+B--Larger cities typically have more events then smaller ones
+H--Transportation
+B--Canadian cities typically maintain an affordable public transport system usually consisting of buses. Public transportation may include:
+P--Bus: transportation by the road system form place to place
+P-Light Rail: transportation by train around the city
+P--Tram: a train that travels on the road alongside cars any road with rails has a tram
+P--Subway: Underground train, cutting across cities
+H--Connected
+B--Cities in Canada are connected in many ways making for viable travel from place to place depending on the duration and trip the following methods are typically used to travel from city to city:
+P--Bus: transport by road
+P--Train: transport by rail across land, can cover much larger distances faster then a bus
