@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">About Canada</string>
+    <string name="app_name">Welcome to Canada</string>
 
     <string name="title_section1">Home</string>
     <string name="title_section2">About Canada</string>
@@ -7,6 +7,7 @@
     <string name="title_section4">Social Habits and Culture</string>
     <string name="title_section5">Holidays</string>
     <string name="title_section6">Finance and Currency</string>
+    <string name="title_section7">Landmarks</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
