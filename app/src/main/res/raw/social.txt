@@ -1,0 +1,28 @@
+H--Dining etiquette
+B--Dining etiquette in Canada is very easygoing across the country. In Quebec however, things may be a bit more formal.
+B--Provinces and territories (excluding Quebec)
+P--fork in left hand; knife in right hand
+P--no elbows on the table
+P--Apply pressure to knife and fork using index finger
+P--If the food is easier to eat with hand then do so
+P--Do not start to eat until everyone and the host is ready
+P--meals are served in different courses (Usually one appetizer, one salad, one main dish and one dessert)
+P--Try to eat all the food on your plate
+H--Quebec
+P--wine is usually served with a meal
+P--If you are invited to drink at a bar, it is expected that each person is to pay for a round.
+P--Refer to a waiter as ‘Monsieur’ and a waitress as ‘Madamoiselle’
+H--Tipping
+P--It is courtesy to tip about 15-20% of the total bill. Less than 15% is used for tipping poor service. If the service is outstanding, it is common to tip 25%.
+P--In Quebec, waiters are automatically taxed 8% of their pay every day. As such, it costs the waiter money to serve food.
+P--it is also respectful for tipping other services such as taxi service, hairdressers as well as hotel service.
+P--Tipping is optional but highly recommended. Servers and general labourers are not paid well in Canada and as such, they will rely on tipping as part of their income.
+H--Street safety and etiquette
+P--Generally, it is illegal for pedestrians to cross the road if there is no crosswalk. Pedestrians must yield to vehicles. Bylaws may differ depending on municipalities.
+P--In Canada it is common to walk on the right side of sidewalks and staircases.
+P--Vehicles in Canada drive on the right side of the road.
+P--Be sure to follow bylaws which may vary between municipalities.
+H--Communication
+P--introduce yourself by saying your name and then shaking hands with a firm grip
+P--don’t talk loudly as that is disrespectful
+P--maintain eye contact but do not stare too long
