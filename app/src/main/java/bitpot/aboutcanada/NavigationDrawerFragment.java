@@ -61,7 +61,8 @@ public class NavigationDrawerFragment extends Fragment {
             "bitpot.aboutcanada.HomeFragment",
             "bitpot.aboutcanada.AboutCanadaFragment",
             "bitpot.aboutcanada.AboutCitiesFragment",
-            "bitpot.aboutcanada.CultureFragment"
+            "bitpot.aboutcanada.CultureFragment",
+            "bitpot.aboutcanada.LandmarksFragment"
     };
 
     private final String LOG_TAG = NavigationDrawerFragment.class.getSimpleName();
