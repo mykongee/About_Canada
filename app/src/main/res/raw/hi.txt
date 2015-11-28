@@ -1,8 +1,31 @@
-H--Header
-B--body1 yo
-B--body to
-H--header2
-B--blah
-P--Point Note
-P--PointNote2
+H--National Anthem
+H--English
+B--O Canada!
+B--Our home and native land!
+B--True patriot love in all thy sons command.
+B--
+B--With glowing hearts we see thee rise,
+B--The True North strong and free!
+B--
+B--From far and wide,
+B--O Canada, we stand on guard for thee.
+B--
+B--God keep our land glorious and free!
+B--O Canada, we stand on guard for thee.
+B--
+B--O Canada, we stand on guard for thee.
 
+H--En français
+B--O Canada! Terre de nos aïeux,
+B--Ton front est ceint de fleurons glorieux!
+B--
+B--Car ton bras sait porter l'épée,
+B--Il sait porter la croix!
+B--
+B--Ton histoire est une épopée
+B--Des plus brillants exploits.
+B--
+B--Et ta valeur, de foi trempée,
+B--Protégera nos foyers et nos droits.
+B--
+B--Protégera nos foyers et nos droits.
