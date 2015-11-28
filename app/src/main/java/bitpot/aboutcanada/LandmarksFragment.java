@@ -5,7 +5,6 @@ import android.app.Fragment;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,8 +67,8 @@ public class LandmarksFragment extends android.support.v4.app.Fragment {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_landmarks, container, false);
 
-        RecyclerView recyclerView = (RecyclerView) getActivity().findViewById(R.id.card_list);
-        recyclerView.setHasFixedSize(true);
+        android.support.v7.widget.RecyclerView recyclerView =
+                (android.support.v7.widget.RecyclerView) getActivity().findViewById(R.id.card_list);
         LinearLayoutManager llm = new LinearLayoutManager(getActivity());
         llm.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerView.setLayoutManager(llm);
