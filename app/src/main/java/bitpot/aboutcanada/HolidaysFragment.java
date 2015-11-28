@@ -3,7 +3,9 @@ package bitpot.aboutcanada;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,7 +27,7 @@ import java.util.Map;
 
 /**
  * Created by jackli on 2015-11-28.
- * <p/>
+ * <p>
  * Fragment showing Canadian Holidays
  */
 public class HolidaysFragment extends android.support.v4.app.Fragment
@@ -129,7 +131,7 @@ public class HolidaysFragment extends android.support.v4.app.Fragment
         date.set(2015, MONTHS_MAP.get("OCTOBER"), 31);
         holidayDatesMap.put(date, getText(R.string.halloween).toString());
 
-        date.set(2015, MONTHS_MAP.get("NOVEMBER"), 11);
+        date.set(2015, MONTHS_MAP.get("NOVEMBER"), 28);
         holidayDatesMap.put(date, getText(R.string.remembrance_day).toString());
 
         date.set(2015, MONTHS_MAP.get("DECEMBER"), 25);
@@ -143,18 +145,35 @@ public class HolidaysFragment extends android.support.v4.app.Fragment
         String holiday;
         Activity parentActivity = getActivity();
         NotificationManager NM;
-        Notification notifyHoliday;
+        Notification.Builder notifyHoliday;
 
-        if ((holiday = holidayDatesMap.get(currentDay)) != null && (holiday =
-                holidayDatesMap.get(currentDay)).isEmpty())
-        {
-            // todo push notification for holiday
-            NM = (NotificationManager) parentActivity.getSystemService
-                    (Context.NOTIFICATION_SERVICE);
+//        if ((holiday = holidayDatesMap.get(currentDay)) != null && (holiday =
+//                holidayDatesMap.get(currentDay)).isEmpty())
+//        {
+//            // todo push notification for holiday
+//            NM = (NotificationManager) parentActivity.getSystemService
+//                    (Context.NOTIFICATION_SERVICE);
+//            notifyHoliday = new Notification(R.drawable.action_bar_icon,
+//                    "Today is" + holiday + "!", System.currentTimeMillis());
+//            Intent notificationIntent = new Intent(this.getContext(),NotificationView.class);
+//            PendingIntent pendingIntent = PendingIntent.getActivity(this, 0,notificationIntent, 0);
 //            notifyHoliday = new Notification.Builder(this.getContext())
 //                    .setContentTitle("Today is" + holiday + "!");
-        }
+//        }
     }
+
+//    private void Notify(String notificationTitle, String notificationMessage){
+//        Activity parentActivity = getActivity();
+//        NotificationManager notificationManager = (NotificationManager) parentActivity.getSystemService(Context.NOTIFICATION_SERVICE);
+//        @SuppressWarnings("deprecation")
+//
+//        Notification notification = new Notification(R.drawable.action_bar_icon,"New Message", System.currentTimeMillis());
+//        Intent notificationIntent = new Intent(this.getContext() ,NotificationView.class);
+//        PendingIntent pendingIntent = PendingIntent.getActivity(this.getContext(), 0,notificationIntent, 0);
+//
+//        notification.setLatestEventInfo(HolidaysFragment.this, notificationTitle,notificationMessage, pendingIntent);
+//        notificationManager.notify(9999, notification);
+//    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -288,7 +307,7 @@ public class HolidaysFragment extends android.support.v4.app.Fragment
      * fragment to allow an interaction in this fragment to be communicated
      * to the activity and potentially other fragments contained in that
      * activity.
-     * <p/>
+     * <p>
      * See the Android Training lesson <a href=
      * "http://developer.android.com/training/basics/fragments/communicating
      * .html"
