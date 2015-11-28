@@ -4,6 +4,7 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">#CF0000</item>
         <!-- Customize your theme here. -->
+        <item name="colorPrimaryDark">#b30000</item>
     </style>
 
     <style name="FullscreenTheme" parent="android:Theme.NoTitleBar">
