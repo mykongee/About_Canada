@@ -2,7 +2,7 @@ H--About Canada
 B--Welcome to Canada! Here are some quick facts about Canada:
 P--Canada was founded in July 1st, 1867
 
-H-- Canada's Province's:
+H--Canada's Province's:
 P--Nova Scotia
 P--Prince Edward Island
 P--New Brunswick
