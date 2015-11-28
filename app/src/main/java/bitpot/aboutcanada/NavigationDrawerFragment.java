@@ -62,7 +62,7 @@ public class NavigationDrawerFragment extends Fragment {
             "bitpot.aboutcanada.AboutCanadaFragment",
             "bitpot.aboutcanada.AboutCitiesFragment",
             "bitpot.aboutcanada.CultureFragment",
-            "bitpot.aboutcanada.HolidaysFragment"
+            "bitpot.aboutcanada.HolidaysFragment",
             "bitpot.aboutcanada.FinanceFragment"
     };
 
