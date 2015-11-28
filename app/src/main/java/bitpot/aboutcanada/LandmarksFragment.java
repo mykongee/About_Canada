@@ -2,6 +2,9 @@ package bitpot.aboutcanada;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -9,6 +12,7 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -83,55 +87,99 @@ public class LandmarksFragment extends android.support.v4.app.Fragment {
     }
 
     public void DispFileText(LinearLayout ll){
-        //TODO add landmark txt and images
         InputStream is = getResources().openRawResource(R.raw.landmarks);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
+        TextView tv;
+        ImageView imageView;
         String entireFile = "";
 
-        try {
-            while((line = br.readLine()) != null) { // <--------- place readLine() inside loop
-                // entireFile += (line + "\n"); // <---------- add each line to entireFile
-                TextView tv = new TextView(getActivity());
-                if (line.length() > 0) {
+        int[] drawables = {R.drawable.lm1,R.drawable.lm2,R.drawable.lm3,R.drawable.lm4,
+                R.drawable.lm5,R.drawable.lm6,R.drawable.lm7,R.drawable.lm8,R.drawable.lm9,
+                R.drawable.lm10};
+
+        try  {
+            for (int i = 0; i < 10; i++){
+
+                String path = "R.drawable.lm";
+
+                imageView = new ImageView(getActivity());
+                imageView.setImageBitmap(decodeSampledBitmapFromResource(getResources(),
+                       drawables[i], 200, 200));
+                imageView.setAdjustViewBounds(true);
+                ll.addView(imageView);
+
+                tv = new TextView(getActivity());
+
+                if ((line = br.readLine()).length() > 0) {
                     tv.setText(line.substring(3, line.length()));
                 }
-                ViewGroup.LayoutParams layout = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+                tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
+                tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_header)));
+                tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density), (int) (15 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density));
+
+                ViewGroup.LayoutParams layout = new ViewGroup.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+
+                ll.addView(tv);
                 if (line.length() <= 0) {
-
                 }
-                else {
-
-                    if (line.substring(0,3).equals("H--")) {
-                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
-                        tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_header)));
-                        tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density), (int) (15 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density));
-                    }else if (line.substring(0,3).equals("P--")) {
-                        tv.setText("   • "+line.substring(3,line.length()));
-                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-                        tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
-                        tv.setPadding((int) (10 * getResources().getDisplayMetrics().density), 0, (int) (10 * getResources().getDisplayMetrics().density), 0);
-                    }
-                    else {
-                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-                        tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
-                        tv.setPadding((int) (10 * getResources().getDisplayMetrics().density), 0, (int) (10 * getResources().getDisplayMetrics().density), 0);
-                    }
+                for (int j = 0; j < 3; j++){
+                    line = br.readLine();
+                    tv = new TextView(getActivity());
+                    tv.setText("   • " + line.substring(3, line.length()));
+                    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
+                    tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
+                    tv.setPadding((int) (10 * getResources().getDisplayMetrics().density), 0, (int) (10 * getResources().getDisplayMetrics().density), 0);
                     tv.setLayoutParams(layout);
                     ll.addView(tv);
-                    if (line.substring(0,3).equals("H--")) {
-                        View lineDr = new View(getActivity());
-                        ViewGroup.LayoutParams linelay = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
-                        lineDr.setLayoutParams(linelay);
-                        lineDr.setBackgroundColor(Color.parseColor(getResources().getString(R.string.line_header)));
-                        ll.addView(lineDr);
-                    }
                 }
+
             }
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+    }
+
+    public static int calculateInSampleSize(
+            BitmapFactory.Options options, int reqWidth, int reqHeight) {
+        // Raw height and width of image
+        final int height = options.outHeight;
+        final int width = options.outWidth;
+        int inSampleSize = 1;
+
+        if (height > reqHeight || width > reqWidth) {
+
+            final int halfHeight = height / 2;
+            final int halfWidth = width / 2;
+
+            // Calculate the largest inSampleSize value that is a power of 2 and keeps both
+            // height and width larger than the requested height and width.
+            while ((halfHeight / inSampleSize) > reqHeight
+                    && (halfWidth / inSampleSize) > reqWidth) {
+                inSampleSize *= 2;
+            }
+        }
+
+        return inSampleSize;
+    }
+
+    public static Bitmap decodeSampledBitmapFromResource(Resources res, int resId,
+                                                         int reqWidth, int reqHeight) {
+
+        // First decode with inJustDecodeBounds=true to check dimensions
+        final BitmapFactory.Options options = new BitmapFactory.Options();
+        options.inJustDecodeBounds = true;
+        BitmapFactory.decodeResource(res, resId, options);
+
+        // Calculate inSampleSize
+        options.inSampleSize = calculateInSampleSize(options, reqWidth, reqHeight);
+
+        // Decode bitmap with inSampleSize set
+        options.inJustDecodeBounds = false;
+        return BitmapFactory.decodeResource(res, resId, options);
     }
 
     // TODO: Rename method, update argument and hook method into UI event
