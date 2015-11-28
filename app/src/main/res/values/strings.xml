@@ -25,4 +25,17 @@
     <string name="font_header">"#CF0000"</string>
     <string name="font_body">"#888888"</string>
     <string name="line_header">#666666</string>
+
+    <!-- Holidays -->
+    <string name="new_years">New Year\'s Day</string>
+    <string name="good_friday">Good Friday</string>
+    <string name="mothers_day">Mother\'s Day</string>
+    <string name="victoria_day">Victoria Day</string>
+    <string name="fathers_day">Father\'s Day</string>
+    <string name="canada_day">Canada Day</string>
+    <string name="labour_day">Labour Day</string>
+    <string name="thanksgiving_day">Thanksgiving Day</string>
+    <string name="halloween">Halloween</string>
+    <string name="remembrance_day">Remembrance Day</string>
+    <string name="christmas">Christams</string>
 </resources>
