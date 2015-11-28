@@ -21,7 +21,8 @@ public class MainActivity extends AppCompatActivity
         CultureFragment.OnFragmentInteractionListener,
         HomeFragment.OnFragmentInteractionListener,
         HolidaysFragment.OnFragmentInteractionListener,
-        FinanceFragment.OnFragmentInteractionListener
+        FinanceFragment.OnFragmentInteractionListener,
+        LandmarksFragment.OnFragmentInteractionListener
 {
 
     /**
@@ -77,6 +78,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 6:
                 mTitle = getString(R.string.title_section6);
+                break;
+            case 7:
+                mTitle = getString(R.string.title_section7);
                 break;
         }
     }
