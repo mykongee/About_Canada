@@ -1,0 +1,16 @@
+H--Currency Exchange
+H--Sales tax
+B--
+B--British Columbia 5% GST, 7% PST
+B--Alberta 5% GST
+B--Saskatchewan 5% GST, 5% PST
+B--Manitoba 5% GST, 8% PST
+B--Ontario 13% HST
+B--Quebec 5% GST, 9.975% PST
+B--Newfoundland and Labrador 13% HST
+B--Nova Scotia 15% HST
+B--New Brunswick 13% HST
+B--Prince Edward Island 14% HST
+B--Northwest Territories 5% GST
+B--Nunavut 5% GST
+B--Yukon 5% GST
