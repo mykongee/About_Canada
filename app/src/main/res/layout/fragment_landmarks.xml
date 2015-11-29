@@ -12,7 +12,6 @@
             android:gravity="center|left"
             android:orientation="vertical" >
 
-
         </LinearLayout>
     </ScrollView>
 </FrameLayout>
