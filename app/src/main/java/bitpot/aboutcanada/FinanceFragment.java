@@ -92,7 +92,7 @@ public class FinanceFragment extends android.support.v4.app.Fragment {
                     (Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.list_view_header, null, false);
             ListView lv = (ListView) view.findViewById(R.id.lv);
             headerView.setText("Currency Exchange");
-            headerView.setPadding(12, 0,0,0);
+            headerView.setPadding(36, 0,0,0);
             lv.addHeaderView(headerView);
 
             InputStream is = getResources().openRawResource(R.raw.finance);
@@ -214,11 +214,9 @@ public class FinanceFragment extends android.support.v4.app.Fragment {
                 System.out.println(adapter.getCount());
                 System.out.println("hello");
 
-//                adapter.clear();
                 System.out.println(adapter.getCount());
                 System.out.println("hello2");
                 System.out.println(currencyArray.size());
-
 
                 for (String x: financeArray) {
                         System.out.println("inloop?");

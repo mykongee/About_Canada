@@ -31,7 +31,8 @@ public class MainActivity extends AppCompatActivity
         HolidaysFragment.OnFragmentInteractionListener,
         FinanceFragment.OnFragmentInteractionListener,
         LandmarksFragment.OnFragmentInteractionListener,
-        CanadaFragment.OnFragmentInteractionListener
+        CanadaFragment.OnFragmentInteractionListener,
+        TransBlankFragment.OnFragmentInteractionListener
 { 
 
     /**

@@ -3,15 +3,13 @@ package bitpot.aboutcanada;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.graphics.Color;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -187,7 +185,14 @@ public class HolidaysFragment extends android.support.v4.app.Fragment
         View view = inflater.inflate(R.layout.fragment_holiday, null);
         try
         {
+            TextView headerView = (TextView) ((LayoutInflater) getActivity().getSystemService
+                    (Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.list_view_header, null, false);
+            headerView.setText("Holidays");
+            headerView.setPadding(36, 0, 0, 0);
+
             lvs = (ListView) view.findViewById(R.id.holiday_list);
+            lvs.addHeaderView(headerView);
+
             InputStream is = getResources().openRawResource(R.raw.holidays);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String line;
