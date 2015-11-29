@@ -106,7 +106,9 @@ public class LandmarksFragment extends android.support.v4.app.Fragment {
                 imageView = new ImageView(getActivity());
                 imageView.setImageBitmap(decodeSampledBitmapFromResource(getResources(),
                        drawables[i], 200, 200));
+                imageView.setScaleType(ImageView.ScaleType.CENTER);
                 imageView.setAdjustViewBounds(true);
+                imageView.setPadding(0, 12, 0, 0);
                 ll.addView(imageView);
 
                 tv = new TextView(getActivity());
@@ -137,6 +139,7 @@ public class LandmarksFragment extends android.support.v4.app.Fragment {
                 }
 
             }
+            br.close();
         } catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -159,10 +162,9 @@ public class LandmarksFragment extends android.support.v4.app.Fragment {
             // height and width larger than the requested height and width.
             while ((halfHeight / inSampleSize) > reqHeight
                     && (halfWidth / inSampleSize) > reqWidth) {
-                inSampleSize *= 2;
+                inSampleSize *= 3  ;
             }
         }
-
         return inSampleSize;
     }
 
