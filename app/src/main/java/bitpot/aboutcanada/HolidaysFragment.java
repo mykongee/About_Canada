@@ -10,13 +10,16 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,6 +31,12 @@ import java.util.Map;
  */
 public class HolidaysFragment extends android.support.v4.app.Fragment
 {
+
+    ArrayList<String> holidayArray = new ArrayList<String>();
+    ArrayAdapter<String> adapter;
+    ListView lvs;
+
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -175,95 +184,38 @@ public class HolidaysFragment extends android.support.v4.app.Fragment
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState)
     {
-        View view = inflater.inflate(R.layout.fragment_about_cities, null);
-        DispFileText((LinearLayout) view.findViewById(R.id.fragCityLinLay));
-        return view;
-    }
-
-    public void DispFileText(LinearLayout ll)
-    {
-        InputStream is = getResources().openRawResource(R.raw.holidays);
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        String line;
-        String entireFile = "";
-
+        View view = inflater.inflate(R.layout.fragment_holiday, null);
         try
         {
+            lvs = (ListView) view.findViewById(R.id.holiday_list);
+            InputStream is = getResources().openRawResource(R.raw.holidays);
+            BufferedReader br = new BufferedReader(new InputStreamReader(is));
+            String line;
+
             while ((line = br.readLine()) != null)
             { // <--------- place readLine() inside loop
                 // entireFile += (line + "\n"); // <---------- add each line
                 // to entireFile
-                TextView tv = new TextView(getActivity());
-                if (line.length() > 0)
-                {
-                    tv.setText(line.substring(3, line.length()));
-                }
+
+                    holidayArray.add(line);
+                System.out.println(holidayArray.size());
+
                 ViewGroup.LayoutParams layout = new ViewGroup.LayoutParams
                         (ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup
                                 .LayoutParams.MATCH_PARENT);
-                if (line.length() <= 0)
-                {
-
-                }
-                else
-                {
-
-                    if (line.substring(0, 3).equals("H--"))
-                    {
-                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
-                        tv.setTextColor(Color.parseColor(getResources()
-                                .getString(R.string.font_header)));
-                        tv.setPadding((int) (15 * getResources()
-                                        .getDisplayMetrics().density), (int)
-                                        (5 *
-                                                getResources()
-                                                        .getDisplayMetrics()
-                                                        .density),
-                                (int) (15 * getResources().getDisplayMetrics
-                                        ().density), (int) (5 * getResources
-                                        ().getDisplayMetrics().density));
-                    }
-                    else if (line.substring(0, 3).equals("P--"))
-                    {
-                        tv.setText("   • " + line.substring(3, line.length()));
-                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-                        tv.setTextColor(Color.parseColor(getResources()
-                                .getString(R.string.font_body)));
-                        tv.setPadding((int) (10 * getResources()
-                                .getDisplayMetrics().density), 0, (int) (10 *
-                                getResources().getDisplayMetrics().density), 0);
-                    }
-                    else
-                    {
-                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-                        tv.setTextColor(Color.parseColor(getResources()
-                                .getString(R.string.font_body)));
-                        tv.setPadding((int) (10 * getResources()
-                                .getDisplayMetrics().density), 0, (int) (10 *
-                                getResources().getDisplayMetrics().density), 0);
-                    }
-                    tv.setLayoutParams(layout);
-                    ll.addView(tv);
-                    if (line.substring(0, 3).equals("H--"))
-                    {
-                        View lineDr = new View(getActivity());
-                        ViewGroup.LayoutParams linelay = new ViewGroup
-                                .LayoutParams(ViewGroup.LayoutParams
-                                .MATCH_PARENT, 1);
-                        lineDr.setLayoutParams(linelay);
-                        lineDr.setBackgroundColor(Color.parseColor
-                                (getResources().getString(R.string
-                                        .line_header)));
-                        ll.addView(lineDr);
-                    }
-                }
             }
+
+            adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, holidayArray);
+            lvs.setAdapter(adapter);
+            return view;
         }
         catch (IOException e)
         {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
+        return view;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event
