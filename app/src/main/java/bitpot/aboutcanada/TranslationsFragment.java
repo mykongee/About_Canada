@@ -163,6 +163,8 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
             case 9:
                 diction = R.raw.dictionarytamil;
                 break;
+            default:
+                return;
         }
 
         // Showing selected spinner item

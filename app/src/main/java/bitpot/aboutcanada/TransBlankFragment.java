@@ -68,7 +68,7 @@ public class TransBlankFragment extends android.support.v4.app.Fragment implemen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        TranslationsFragment.diction=R.raw.dictionaryfrench;
+        TranslationsFragment.diction=R.raw.dictionaryenglish;
         diction = R.raw.dictionaryfrench;
         View view = inflater.inflate(R.layout.fragment_translation, null);
         Spinner spinner = (Spinner) view.findViewById(R.id.spinnerLang);
