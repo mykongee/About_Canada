@@ -2,6 +2,7 @@ package bitpot.aboutcanada;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import org.json.JSONObject;
 
@@ -86,49 +88,20 @@ public class FinanceFragment extends android.support.v4.app.Fragment {
 
         View view = inflater.inflate(R.layout.fragment_finance, null);
         try {
+            TextView headerView = (TextView) ((LayoutInflater) getActivity().getSystemService
+                    (Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.list_view_header, null, false);
             ListView lv = (ListView) view.findViewById(R.id.lv);
+            headerView.setText("Currency Exchange");
+            headerView.setPadding(12, 0,0,0);
+            lv.addHeaderView(headerView);
+
             InputStream is = getResources().openRawResource(R.raw.finance);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String line;
             financeArray = new ArrayList<String>();
 
             while((line = br.readLine()) != null) { // <--------- place readLine() inside loop
-                // entireFile += (line + "\n"); // <---------- add each line to entireFile
                 financeArray.add(line);
-//                TextView tv = new TextView(getActivity());
-//                if (line.length() > 0) {
-//                    tv.setText(line.substring(3, line.length()));
-//                }
-//                ViewGroup.LayoutParams layout = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-//                if (line.length() <= 0) {
-//
-//                }
-//                else {
-//                    if (line.substring(0,3).equals("H--")) {
-//                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 35);
-//                        tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_header)));
-//                        tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density), (int) (15 * getResources().getDisplayMetrics().density), (int) (5 * getResources().getDisplayMetrics().density));
-//                    }else if (line.substring(0,3).equals("P--")) {
-//                        tv.setText("   • "+line.substring(3,line.length()));
-//                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-//                        tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
-//                        tv.setPadding((int) (10 * getResources().getDisplayMetrics().density), 0, (int) (10 * getResources().getDisplayMetrics().density), 0);
-//                    }
-//                    else {
-//                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-//                        tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
-//                        tv.setPadding((int) (10 * getResources().getDisplayMetrics().density), 0, (int) (10 * getResources().getDisplayMetrics().density), 0);
-//                    }
-//                    tv.setLayoutParams(layout);
-//                    lv.addView(tv);
-//                    if (line.substring(0,3).equals("H--")) {
-//                        View lineDr = new View(getActivity());
-//                        ViewGroup.LayoutParams linelay = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
-//                        lineDr.setLayoutParams(linelay);
-//                        lineDr.setBackgroundColor(Color.parseColor(getResources().getString(R.string.line_header)));
-//                        lv.addView(lineDr);
-//                    }
-//                }
             }
 
             adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, currencyArray);
@@ -224,8 +197,6 @@ public class FinanceFragment extends android.support.v4.app.Fragment {
 //                JSONObject date = obj.getJSONObject("date");
                 JSONObject currencies = obj.getJSONObject("rates");
                 System.out.println(currencies);
-                adapter.add("Currency Exchange");
-
                 for (int i = 0; i < currencies.names().length() ;i++) {
 
                     String y = (String) currencies.names().get(i);
