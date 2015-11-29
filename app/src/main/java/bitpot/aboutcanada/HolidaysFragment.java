@@ -3,9 +3,6 @@ package bitpot.aboutcanada;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationManager;
-import android.app.PendingIntent;
-import android.content.Context;
-import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -21,7 +18,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -184,7 +180,6 @@ public class HolidaysFragment extends android.support.v4.app.Fragment
         return view;
     }
 
-    // todo - pull holiday dates from online rather than hardcoded into a file
     public void DispFileText(LinearLayout ll)
     {
         InputStream is = getResources().openRawResource(R.raw.holidays);
