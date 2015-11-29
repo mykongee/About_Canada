@@ -230,6 +230,7 @@ public class FinanceFragment extends android.support.v4.app.Fragment {
 //                JSONObject date = obj.getJSONObject("date");
                 JSONObject currencies = obj.getJSONObject("rates");
                 System.out.println(currencies);
+                adapter.add("Currency Exchange");
 
                 for (int i = 0; i < currencies.names().length() ;i++) {
 
@@ -252,7 +253,7 @@ public class FinanceFragment extends android.support.v4.app.Fragment {
                 System.out.println(adapter.getCount());
                 System.out.println("hello2");
                 System.out.println(currencyArray.size());
-                adapter.add("Finance and currency");
+
 
                 for (String x: financeArray) {
                         System.out.println("inloop?");
