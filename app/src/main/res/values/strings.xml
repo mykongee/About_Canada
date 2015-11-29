@@ -40,7 +40,9 @@
     <string name="thanksgiving_day">Thanksgiving Day</string>
     <string name="halloween">Halloween</string>
     <string name="remembrance_day">Remembrance Day</string>
-    <string name="christmas">Christams</string>
+    <string name="christmas">Christmas</string>
+    <string name="hack_western">Hack Western</string>
+
 
     <string-array name="Language_Array">
         <item>Français</item>

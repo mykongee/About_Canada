@@ -1,4 +1,3 @@
-H--Definition
 H--Public Resources
 B--Public resources include a variety of items which are available for all to use.
 B--These items include:
