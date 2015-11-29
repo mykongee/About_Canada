@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
     android:layout_height="match_parent">
-    <ListView android:id="@+id/lv"
+
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/list_view_header"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="learn urself culture yo" />
-</LinearLayout>
+        android:textSize="35sp"
+        android:paddingLeft="12dp"
+        android:layout_marginLeft="12dp"
+        android:layout_above="@+id/lv"
+        android:textColor="#CF0000">
+    </TextView>
+
+    <ListView android:id="@+id/lv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

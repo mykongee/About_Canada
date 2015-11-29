@@ -1,25 +1,22 @@
 package bitpot.aboutcanada;
 
 import android.app.Activity;
-import android.graphics.Color;
+import android.app.Fragment;
+import android.content.Context;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.app.Fragment;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.*;
+import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -27,7 +24,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Iterator;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -92,14 +88,19 @@ public class FinanceFragment extends android.support.v4.app.Fragment {
 
         View view = inflater.inflate(R.layout.fragment_finance, null);
         try {
+            TextView headerView = (TextView) ((LayoutInflater) getActivity().getSystemService
+                    (Context.LAYOUT_INFLATER_SERVICE)).inflate(R.layout.list_view_header, null, false);
             ListView lv = (ListView) view.findViewById(R.id.lv);
+            headerView.setText("Currency Exchange");
+            headerView.setPadding(12, 0,0,0);
+            lv.addHeaderView(headerView);
+
             InputStream is = getResources().openRawResource(R.raw.finance);
             BufferedReader br = new BufferedReader(new InputStreamReader(is));
             String line;
             financeArray = new ArrayList<String>();
 
             while((line = br.readLine()) != null) { // <--------- place readLine() inside loop
-                // entireFile += (line + "\n"); // <---------- add each line to entireFile
                 financeArray.add(line);
             }
 
@@ -196,8 +197,6 @@ public class FinanceFragment extends android.support.v4.app.Fragment {
 //                JSONObject date = obj.getJSONObject("date");
                 JSONObject currencies = obj.getJSONObject("rates");
                 System.out.println(currencies);
-                adapter.add("Currency Exchange");
-
                 for (int i = 0; i < currencies.names().length() ;i++) {
 
                     String y = (String) currencies.names().get(i);
