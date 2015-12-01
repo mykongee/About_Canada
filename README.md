@@ -1,4 +1,4 @@
-# Welcome to Canada.
+# Welcome to Canada
 HackWestern 2 Android Project
 An app that helps people learn about Canada's culture and customs.
 #Instructions
