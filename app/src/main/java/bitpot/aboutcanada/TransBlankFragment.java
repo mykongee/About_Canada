@@ -1,6 +1,7 @@
 package bitpot.aboutcanada;
 
 import android.app.Activity;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,6 +12,26 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import android.graphics.Color;
+import android.net.Uri;
+import android.os.Bundle;
+import android.util.TypedValue;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.util.*;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Spinner;
+import android.widget.*;
+import android.view.MotionEvent;
+import android.widget.AdapterView.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 
 public class TransBlankFragment extends android.support.v4.app.Fragment implements OnItemSelectedListener,View.OnTouchListener{
     // TODO: Rename parameter arguments, choose names that match
@@ -59,7 +80,9 @@ public class TransBlankFragment extends android.support.v4.app.Fragment implemen
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        TranslationsFragment.diction=R.raw.dictionaryfrench;
+
+        TranslationsFragment.diction=R.raw.dictionaryenglish;
+
         diction = R.raw.dictionaryfrench;
         View view = inflater.inflate(R.layout.fragment_translation, null);
         Spinner spinner = (Spinner) view.findViewById(R.id.spinnerLang);
