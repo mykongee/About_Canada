@@ -111,7 +111,7 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
                 line2 = brr.readLine();
                 // entireFile += (line + "\n"); // <---------- add each line to entireFile
                 TextView tv = new TextView(getActivity());
-                if (line.length() > 0) {
+                if (line.length() > 3) {
                     tv.setText(line.substring(3, line.length()));
                 }
                 ViewGroup.LayoutParams layout = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);

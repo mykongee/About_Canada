@@ -61,7 +61,6 @@ public class MainActivity extends AppCompatActivity
      */
     private MediaPlayer mediaPlayer;
 
-
     static
     {
         MONTHS_MAP.put("JANUARY", 0);
