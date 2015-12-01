@@ -13,7 +13,13 @@ Application can be installed via Android Studio
 * and many more!!!
 
 #Coming Soon
-iOS version will be released later on in the year!
+Stay tuned! Version 2 is expected to be released later on in the year! 
+
+#Pictures
+![Alt text](/pictures/Screenshot_20151129-092947.png?)
+![Alt text](/pictures/Screenshot_20151129-093001.png?)
+![Alt text](/pictures/Screenshot_20151129-112111.png?)
+![Alt text](/pictures/Screenshot_20151129-092840.png?)
 
 
 
