@@ -80,7 +80,7 @@ public class AboutCanadaFragment extends android.support.v4.app.Fragment {
 
 
     public void DispFileText(LinearLayout ll){
-        InputStream is = getResources().openRawResource(R.raw.social);
+        InputStream is = getResources().openRawResource(R.raw.aboutcanada);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
         String entireFile = "";
