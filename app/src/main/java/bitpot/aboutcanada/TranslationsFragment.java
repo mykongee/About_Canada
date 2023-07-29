@@ -1,6 +1,6 @@
 package bitpot.aboutcanada;
 
-import android.content.Context;
+import android.app.Activity;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,13 +8,12 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.widget.Spinner;
+import android.widget.*;
+import android.widget.AdapterView.*;
+import android.content.Context;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -164,6 +163,8 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
             case 9:
                 diction = R.raw.dictionarytamil;
                 break;
+            default:
+                return;
         }
 
         // Showing selected spinner item
