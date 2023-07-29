@@ -1,6 +1,6 @@
 package bitpot.aboutcanada;
 
-import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,12 +8,16 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Spinner;
 import android.widget.*;
 import android.widget.AdapterView.*;
 import android.content.Context;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -70,6 +74,7 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+//        diction = R.raw.dictionaryfrench;
         View view = inflater.inflate(R.layout.fragment_translation, null);
         Spinner spinner = (Spinner) view.findViewById(R.id.spinnerLang);
 
@@ -102,20 +107,20 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
         String entireFile = "";
 
         try {
-            while((line = br.readLine()) != null) { // <--------- place readLine() inside loop
-                line2= brr.readLine();
+            while ((line = br.readLine()) != null) { // <--------- place readLine() inside loop
+                line2 = brr.readLine();
                 // entireFile += (line + "\n"); // <---------- add each line to entireFile
                 TextView tv = new TextView(getActivity());
-
+                if (line.length() > 3) {
+                    tv.setText(line.substring(3, line.length()));
+                }
                 ViewGroup.LayoutParams layout = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 if (line.length() <= 0) {
 
-                }
-                else {
+                } else {
 
 
-
-                    tv.setText(String.format("%-12s<---->%12s",line2,line));
+                    tv.setText(String.format("%-12s<---->%12s", line2, line));
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
                     tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
                     tv.setGravity(1);
