@@ -30,10 +30,8 @@ public class MainActivity extends AppCompatActivity
         HomeFragment.OnFragmentInteractionListener,
         HolidaysFragment.OnFragmentInteractionListener,
         FinanceFragment.OnFragmentInteractionListener,
-        LandmarksFragment.OnFragmentInteractionListener,
-        CanadaFragment.OnFragmentInteractionListener
-{ 
-
+        LandmarksFragment.OnFragmentInteractionListener
+{
     /**
      * Fragment managing the behaviors, interactions and presentation of the
      * navigation drawer.
@@ -45,6 +43,13 @@ public class MainActivity extends AppCompatActivity
      * #restoreActionBar()}.
      */
     private CharSequence mTitle;
+
+    /**
+     * Number of times that lead icon is clicked in the menu bar.
+     * On odd clicks, O Canada is played. On even clicks, O Canada is paused.
+     * On subsequent odd numbered clicks on subsequent
+     */
+    private static int NUM_O_CANADA = 0;
 
     /**
      * Map of holiday dates (key) and holiday names (values)
@@ -69,6 +74,10 @@ public class MainActivity extends AppCompatActivity
         MONTHS_MAP.put("DECEMBER", 11);
     }
 
+    /**
+     * MediaPlayer object to play O Canada
+     */
+    private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -129,12 +138,18 @@ public class MainActivity extends AppCompatActivity
 
         Calendar date10 = Calendar.getInstance();
         date10.set(2015, MONTHS_MAP.get("NOVEMBER"), 11);
-        holidayDatesMap.put(date10, getText(R.string.remembrance_day).toString());
+        holidayDatesMap.put(date10, getText(R.string.remembrance_day)
+                .toString());
 
         Calendar date11 = Calendar.getInstance();
         date11.set(2015, MONTHS_MAP.get("DECEMBER"), 25);
         Log.d("YEE: ", date11.toString());
         holidayDatesMap.put(date11, getText(R.string.christmas).toString());
+
+        Calendar date12 = Calendar.getInstance();
+        date12.set(2015, MONTHS_MAP.get("NOVEMBER"), 29);
+        Log.d("YEE: ", date12.toString());
+        holidayDatesMap.put(date12, getText(R.string.hack_western).toString());
 
         Calendar currentDate = Calendar.getInstance();
         int currentYear = currentDate.get(Calendar.YEAR);
@@ -155,7 +170,8 @@ public class MainActivity extends AppCompatActivity
             Log.d("YO lDate: ", lDate.toString());
 
             if (currentYear == lDate.get(Calendar.YEAR) && currentMonth ==
-                    lDate.get(Calendar.MONTH) && currentDay == lDate.get(Calendar.DAY_OF_MONTH))
+                    lDate.get(Calendar.MONTH) && currentDay == lDate.get
+                    (Calendar.DAY_OF_MONTH))
             {
                 holiday = holidayDatesMap.get(lDate);
 
@@ -163,24 +179,16 @@ public class MainActivity extends AppCompatActivity
                         (NOTIFICATION_SERVICE);
                 notifyHoliday = new Notification.Builder(this)
                         .setContentTitle("Today is " + holiday + "!")
-                        .setSmallIcon(R.drawable.action_bar_icon);
+                        .setSmallIcon(R.drawable.action_bar_icon)
+                        .setSound(Uri.parse("android.resource://" + getPackageName() + "/" + R
+                                .raw.sorry));
 
                 NM.notify(1, notifyHoliday.getNotification());
             }
         }
 
-//        if ((holiday = holidayDatesMap.get(currentDay)) != null && (holiday =
-//                holidayDatesMap.get(currentDay)).isEmpty())
-//        {
-//            notifyHoliday = new Notification.Builder(this)
-//                    .setContentTitle("Today is" + holiday + "!")
-//                    .setContentText("YO")
-//                    .setSmallIcon(R.drawable.action_bar_icon)
-//                    .getNotification();
-//            show = notifyHoliday.build();
-//            NM = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-//            NM.notify(1, show);
-//        }
+        mediaPlayer = MediaPlayer.create(this.getBaseContext(),
+                R.raw.ocanada);
     }
 
     @Override
@@ -219,12 +227,6 @@ public class MainActivity extends AppCompatActivity
             case 7:
                 mTitle = getString(R.string.title_section7);
                 break;
-            case 8:
-                mTitle = getString(R.string.title_section8);
-                break;
-            case 9:
-                mTitle = getString(R.string.title_section9);
-                break;
         }
     }
 
@@ -235,7 +237,6 @@ public class MainActivity extends AppCompatActivity
         actionBar.setDisplayShowTitleEnabled(true);
         actionBar.setTitle(mTitle);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
@@ -258,11 +259,29 @@ public class MainActivity extends AppCompatActivity
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-        if (id == R.id.leaf_icon) {
-            MediaPlayer mp = MediaPlayer.create(this.getBaseContext(), R.raw.ocanada);
-            mp.start();
 
+        Log.d("YOY before increment", "" + NUM_O_CANADA);
+        NUM_O_CANADA++;
+        Log.d("YOY after increment", "" + NUM_O_CANADA);
+
+        if (!(mediaPlayer.getCurrentPosition() <= mediaPlayer.getDuration()))
+        {
+            Log.d("YOY ", "Inside MediaPlayer object reset");
+            mediaPlayer = MediaPlayer.create(this.getBaseContext(),
+                    R.raw.ocanada);
+        }
+
+        // If leaf icon is clicked on odd number of times, O Canada plays
+        // Even number - O Canada is paused
+        if ((NUM_O_CANADA % 2 == 1) && item.getItemId() == R.id.leaf_icon)
+        {
+            Log.d("YOY ", "Inside if");
+            mediaPlayer.start();
+        }
+        else if (NUM_O_CANADA % 2 == 0)
+        {
+            Log.d("YOY ", "Inside else if");
+            mediaPlayer.pause();
         }
 
         return super.onOptionsItemSelected(item);
