@@ -43,6 +43,7 @@
     <string name="christmas">Christams</string>
 
     <string-array name="Language_Array">
+        <item>None</item>
         <item>Français</item>
         <item>العربية</item>
         <item>中文 (简化)</item>
