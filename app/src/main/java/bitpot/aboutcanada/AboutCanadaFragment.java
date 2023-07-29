@@ -94,7 +94,6 @@ public class AboutCanadaFragment extends android.support.v4.app.Fragment {
                 }
                 ViewGroup.LayoutParams layout = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 if (line.length() <= 0) {
-
                 }
                 else {
 
