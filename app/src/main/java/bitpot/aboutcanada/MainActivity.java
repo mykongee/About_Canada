@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity
         AboutCitiesFragment.OnFragmentInteractionListener,
         CultureFragment.OnFragmentInteractionListener,
         HomeFragment.OnFragmentInteractionListener,
+        HolidaysFragment.OnFragmentInteractionListener,
         FinanceFragment.OnFragmentInteractionListener
 {
 
@@ -73,6 +74,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 5:
                 mTitle = getString(R.string.title_section5);
+                break;
+            case 6:
+                mTitle = getString(R.string.title_section6);
                 break;
         }
     }
