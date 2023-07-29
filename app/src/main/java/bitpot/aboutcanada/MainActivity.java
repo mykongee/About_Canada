@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity
         AboutCanadaFragment.OnFragmentInteractionListener,
         AboutCitiesFragment.OnFragmentInteractionListener,
         CultureFragment.OnFragmentInteractionListener,
-        HomeFragment.OnFragmentInteractionListener{
+        HomeFragment.OnFragmentInteractionListener,
+        LandmarksFragment.OnFragmentInteractionListener{
 
     /**
      * Fragment managing the behaviors, interactions and presentation of the navigation drawer.
@@ -69,6 +70,8 @@ public class MainActivity extends AppCompatActivity
             case 4:
                 mTitle = getString(R.string.title_section4);
                 break;
+            case 5:
+                mTitle = getString(R.string.title_section5);
         }
     }
 
