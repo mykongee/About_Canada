@@ -109,9 +109,6 @@ public class CultureFragment extends android.support.v4.app.Fragment {
                     tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
                     tv.setPadding((int) (15 * getResources().getDisplayMetrics().density), 0, 0, 0);
                 }
-                else if (line.substring(0,3).equals("") || line.substring(0,3).equals("   ")){
-
-                }
                 else {
                     tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);
                     tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
