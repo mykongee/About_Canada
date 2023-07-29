@@ -4,7 +4,6 @@ An app that helps people learn about Canada's culture and customs.
 #Instructions
 Application can be installed via Android Studio
 #Features:
-* Bullet list
 * Real Time Push notifications for Holidays
 * Daily currency exchange updates
 * Canadian landmarks
