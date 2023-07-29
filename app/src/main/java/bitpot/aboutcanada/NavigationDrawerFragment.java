@@ -5,13 +5,12 @@ import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -104,7 +103,6 @@ public class NavigationDrawerFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 selectItem(position);
-                Log.v(LOG_TAG, "clicked an item");
                 android.support.v4.app.FragmentTransaction fragmentTransaction =
                         getFragmentManager().beginTransaction();
                 fragmentTransaction.replace(R.id.container, Fragment.instantiate(getContext(),
@@ -115,8 +113,6 @@ public class NavigationDrawerFragment extends Fragment {
         });
         mDrawerListView.setAdapter(new ArrayAdapter<String>(
                 getActionBar().getThemedContext(),
-//                android.R.layout.simple_list_item_activated_1,
-//                android.R.id.text1,
                 R.layout.list_item_layout,
                 R.id.list_item_drawer,
                 new String[]{
