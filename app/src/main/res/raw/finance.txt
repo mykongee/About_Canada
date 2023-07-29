@@ -1,6 +1,4 @@
-H--Currency Exchange
-Covert currencies from CAD to another currency
-H--Sales tax
+Sales tax
 British Columbia 5% GST, 7% PST
 Alberta 5% GST
 Saskatchewan 5% GST, 5% PST
