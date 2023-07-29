@@ -7,5 +7,6 @@
         android:title="logo"
         android:id="@+id/leaf_icon"
         android:orderInCategory="90"
+        android:icon="@drawable/action_bar_icon"
         app:showAsAction="ifRoom|withText"/>
 </menu>
