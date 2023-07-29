@@ -1,5 +1,7 @@
 package bitpot.aboutcanada;
-
+/**
+ * Created by Matthew on 11/29/2015.
+ */
 import android.app.Activity;
 import android.app.Fragment;
 import android.graphics.Color;
@@ -27,7 +29,7 @@ import java.util.Calendar;
  * Use the {@link HomeFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class HomeFragment extends android.support.v4.app.Fragment {
+public class CanadaFragment extends android.support.v4.app.Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -57,7 +59,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
         return fragment;
     }
 
-    public HomeFragment() {
+    public CanadaFragment() {
         // Required empty public constructor
     }
 
@@ -81,7 +83,7 @@ public class HomeFragment extends android.support.v4.app.Fragment {
 
 
     public void DispFileText(LinearLayout ll){
-        InputStream is = getResources().openRawResource(R.raw.home);
+        InputStream is = getResources().openRawResource(R.raw.anthem);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
         String entireFile = "";

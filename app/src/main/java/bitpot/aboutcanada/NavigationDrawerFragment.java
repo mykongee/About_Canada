@@ -65,7 +65,8 @@ public class NavigationDrawerFragment extends Fragment {
             "bitpot.aboutcanada.HolidaysFragment",
             "bitpot.aboutcanada.FinanceFragment",
             "bitpot.aboutcanada.LandmarksFragment",
-            "bitpot.aboutcanada.TranslationsFragment"
+            "bitpot.aboutcanada.TranslationsFragment",
+            "bitpot.aboutcanada.CanadaFragment"
     };
 
     private final String LOG_TAG = NavigationDrawerFragment.class.getSimpleName();
@@ -127,7 +128,8 @@ public class NavigationDrawerFragment extends Fragment {
                         getString(R.string.title_section5),
                         getString(R.string.title_section6),
                         getString(R.string.title_section7),
-                        "Translations"
+                        getString(R.string.title_section8),
+                        getString(R.string.title_section9)
 
                 }));
         mDrawerListView.setItemChecked(mCurrentSelectedPosition, true);
