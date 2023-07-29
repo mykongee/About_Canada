@@ -84,7 +84,7 @@ public class LandmarksFragment extends android.support.v4.app.Fragment {
 
     public void DispFileText(LinearLayout ll){
         //TODO add landmark txt and images
-        InputStream is = getResources().openRawResource(R.raw.aboutcanada);
+        InputStream is = getResources().openRawResource(R.raw.landmarks);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
         String line;
         String entireFile = "";
