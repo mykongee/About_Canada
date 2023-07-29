@@ -1,6 +1,6 @@
 package bitpot.aboutcanada;
 
-import android.app.Activity;
+import android.content.Context;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
@@ -8,11 +8,13 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Spinner;
-import android.widget.*;
-import android.widget.AdapterView.*;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -31,7 +33,7 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private int diction;
+    public static int diction;
 
     private OnFragmentInteractionListener mListener;
 
@@ -69,7 +71,6 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        diction = R.raw.dictionaryfrench;
         View view = inflater.inflate(R.layout.fragment_translation, null);
         Spinner spinner = (Spinner) view.findViewById(R.id.spinnerLang);
 
@@ -88,18 +89,25 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
 
 
     public void DispFileText(LinearLayout ll){
+        View lineDr = new View(getActivity());
+        ViewGroup.LayoutParams linelay = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
+        lineDr.setLayoutParams(linelay);
+        lineDr.setBackgroundColor(Color.parseColor(getResources().getString(R.string.line_header)));
+        ll.addView(lineDr);
         InputStream is = getResources().openRawResource(diction);
         BufferedReader br = new BufferedReader(new InputStreamReader(is));
+        InputStream iss = getResources().openRawResource(R.raw.dictionaryenglish);
+        BufferedReader brr = new BufferedReader(new InputStreamReader(iss));
         String line;
+        String line2;
         String entireFile = "";
 
         try {
             while((line = br.readLine()) != null) { // <--------- place readLine() inside loop
+                line2= brr.readLine();
                 // entireFile += (line + "\n"); // <---------- add each line to entireFile
                 TextView tv = new TextView(getActivity());
-                if (line.length() > 0) {
-                    tv.setText(line.substring(3, line.length()));
-                }
+
                 ViewGroup.LayoutParams layout = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
                 if (line.length() <= 0) {
 
@@ -108,15 +116,16 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
 
 
 
-                        tv.setText(line);
-                        tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 15);
-                        tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
-                        tv.setPadding((int) (10 * getResources().getDisplayMetrics().density), 0, (int) (10 * getResources().getDisplayMetrics().density), 0);
+                    tv.setText(String.format("%-12s<---->%12s",line2,line));
+                    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
+                    tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
+                    tv.setGravity(1);
+                    tv.setPadding((int) (10 * getResources().getDisplayMetrics().density), 0, (int) (10 * getResources().getDisplayMetrics().density), 0);
 
-                        ll.addView(tv);
-                    }
+                    ll.addView(tv);
                 }
             }
+        }
         catch (IOException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -159,6 +168,12 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
 
         // Showing selected spinner item
         Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
+        android.support.v4.app.Fragment newFragment = new TranslationsFragment();
+        android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.langLang, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();
     }
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
@@ -172,14 +187,21 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
         }
     }
 
+
     @Override
-    public void onAttach(Activity activity) {
-        super.onAttach(activity);
+    public void onAttach(Context context) {
+        super.onAttach(context);
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
         try {
-            mListener = (OnFragmentInteractionListener) activity;
+            mListener = (OnFragmentInteractionListener) getActivity();
         } catch (ClassCastException e) {
-            throw new ClassCastException(activity.toString()
-                    + " must implement OnFragmentInteractionListener");
+            //throw new ClassCastException(getActivity().toString()
+              //      + " must implement OnFragmentInteractionListener");
         }
     }
 

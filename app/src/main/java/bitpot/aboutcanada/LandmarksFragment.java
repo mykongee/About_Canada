@@ -108,7 +108,7 @@ public class LandmarksFragment extends android.support.v4.app.Fragment {
                        drawables[i], 200, 200));
                 imageView.setScaleType(ImageView.ScaleType.CENTER);
                 imageView.setAdjustViewBounds(true);
-                imageView.setPadding(0, 12, 0, 0);
+                imageView.setPadding(0, 24, 0, 0);
                 ll.addView(imageView);
 
                 tv = new TextView(getActivity());
