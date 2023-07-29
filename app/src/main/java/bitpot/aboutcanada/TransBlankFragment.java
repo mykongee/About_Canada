@@ -8,22 +8,20 @@ import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.util.*;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Spinner;
 import android.widget.*;
+import android.view.MotionEvent;
 import android.widget.AdapterView.*;
-import android.content.Context;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-/**
- * Created by Pavi-MAC on 2015-11-28.
- */
-public class TranslationsFragment extends android.support.v4.app.Fragment implements OnItemSelectedListener{
+public class TransBlankFragment extends android.support.v4.app.Fragment implements OnItemSelectedListener,View.OnTouchListener{
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -32,7 +30,7 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    public static int diction;
+    private int diction;
 
     private OnFragmentInteractionListener mListener;
 
@@ -45,8 +43,8 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
      * @return A new instance of fragment AboutCitiesFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static TranslationsFragment newInstance(String param1, String param2) {
-        TranslationsFragment fragment = new TranslationsFragment();
+    public static TransBlankFragment newInstance(String param1, String param2) {
+        TransBlankFragment fragment = new TransBlankFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -54,7 +52,7 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
         return fragment;
     }
 
-    public TranslationsFragment() {
+    public TransBlankFragment() {
         // Required empty public constructor
     }
 
@@ -70,6 +68,8 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        TranslationsFragment.diction=R.raw.dictionaryfrench;
+        diction = R.raw.dictionaryfrench;
         View view = inflater.inflate(R.layout.fragment_translation, null);
         Spinner spinner = (Spinner) view.findViewById(R.id.spinnerLang);
 
@@ -81,92 +81,12 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
-        DispFileText((LinearLayout) view.findViewById(R.id.transLinLay));
+        view.setOnTouchListener(this);
         return view;
-    }
-
-
-
-    public void DispFileText(LinearLayout ll){
-        View lineDr = new View(getActivity());
-        ViewGroup.LayoutParams linelay = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, 1);
-        lineDr.setLayoutParams(linelay);
-        lineDr.setBackgroundColor(Color.parseColor(getResources().getString(R.string.line_header)));
-        ll.addView(lineDr);
-        InputStream is = getResources().openRawResource(diction);
-        BufferedReader br = new BufferedReader(new InputStreamReader(is));
-        InputStream iss = getResources().openRawResource(R.raw.dictionaryenglish);
-        BufferedReader brr = new BufferedReader(new InputStreamReader(iss));
-        String line;
-        String line2;
-        String entireFile = "";
-
-        try {
-            while((line = br.readLine()) != null) { // <--------- place readLine() inside loop
-                line2= brr.readLine();
-                // entireFile += (line + "\n"); // <---------- add each line to entireFile
-                TextView tv = new TextView(getActivity());
-
-                ViewGroup.LayoutParams layout = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
-                if (line.length() <= 0) {
-
-                }
-                else {
-
-
-
-                    tv.setText(String.format("%-12s<---->%12s",line2,line));
-                    tv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
-                    tv.setTextColor(Color.parseColor(getResources().getString(R.string.font_body)));
-                    tv.setGravity(1);
-                    tv.setPadding((int) (10 * getResources().getDisplayMetrics().density), 0, (int) (10 * getResources().getDisplayMetrics().density), 0);
-
-                    ll.addView(tv);
-                }
-            }
-        }
-        catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        // On selecting a spinner item
-        String item = parent.getItemAtPosition(position).toString();
-        switch (position) {
-            case 1:
-                diction = R.raw.dictionaryfrench;
-                break;
-            case 2:
-                diction = R.raw.dictionaryarabic;
-                break;
-            case 3:
-                diction = R.raw.dictionarychinesesimplified;
-                break;
-            case 4:
-                diction = R.raw.dictionarychinesetraditional;
-                break;
-            case 5:
-                diction = R.raw.dictionaryfilipino;
-                break;
-            case 6:
-                diction = R.raw.dictionaryhindi;
-                break;
-            case 7:
-                diction = R.raw.dictionarypunjabi;
-                break;
-            case 8:
-                diction = R.raw.dictionarypersian;
-                break;
-            case 9:
-                diction = R.raw.dictionarytamil;
-                break;
-        }
-
-        // Showing selected spinner item
-        Toast.makeText(parent.getContext(), "Selected: " + item, Toast.LENGTH_LONG).show();
         android.support.v4.app.Fragment newFragment = new TranslationsFragment();
         android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
         transaction = getFragmentManager().beginTransaction();
@@ -174,9 +94,33 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
         transaction.addToBackStack(null);
         transaction.commit();
     }
+
     public void onNothingSelected(AdapterView<?> arg0) {
         // TODO Auto-generated method stub
     }
+
+    public boolean onTouchEvent(MotionEvent event) {
+   /*     Log.d("hi","byedsasa");
+        android.support.v4.app.Fragment newFragment = new CultureFragment();
+        android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.langLang, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();*/
+        return false;
+    }
+    public boolean onTouch(View view,MotionEvent event) {
+    /*    Log.d("hi","byedsasa");
+        android.support.v4.app.Fragment newFragment = new CultureFragment();
+        android.support.v4.app.FragmentTransaction transaction = getFragmentManager().beginTransaction();
+        transaction = getFragmentManager().beginTransaction();
+        transaction.replace(R.id.langLang, newFragment);
+        transaction.addToBackStack(null);
+        transaction.commit();*/
+        return false;
+    }
+
+
 
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -186,21 +130,14 @@ public class TranslationsFragment extends android.support.v4.app.Fragment implem
         }
     }
 
-
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
         try {
-            mListener = (OnFragmentInteractionListener) getActivity();
+            mListener = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
-            //throw new ClassCastException(getActivity().toString()
-              //      + " must implement OnFragmentInteractionListener");
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnFragmentInteractionListener");
         }
     }
 
